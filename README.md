@@ -1,5 +1,7 @@
 # Cross Platform Snake with C++ and SDL2
 
+[![Build Status](https://travis-ci.org/spajus/sdl2-snake.svg?branch=master)](https://travis-ci.org/spajus/sdl2-snake)
+
 There is no better way of learning than by building something. This is a clone
 of classic [Snake game](https://en.wikipedia.org/wiki/Snake_(video_game)). By
 doing this, I intend to learn / refresh my skills in:

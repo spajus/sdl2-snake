@@ -1,0 +1,12 @@
+dist: trusty
+sudo: required
+language: cpp
+compiler:
+  - clang
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -qq -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
+
+script:
+  - scripts/travis.sh
