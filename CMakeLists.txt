@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 2.6)
 project(Snake)
 
 # Use FindSDL2* modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${Snake_SOURCE_DIR}/cmake")
 set(BIN_DIR ${CMAKE_SOURCE_DIR}/bin)
+set(SDL2 "${Snake_SOURCE_DIR}/deps/SDL2-2.0.4")
 set(GTEST_ROOT "${Snake_SOURCE_DIR}/deps/googletest/googletest")
 set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 
