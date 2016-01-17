@@ -7,9 +7,13 @@
 - [SDL_Image](https://www.libsdl.org/projects/SDL_image/)
 - [SDL_ttf](https://www.libsdl.org/projects/SDL_ttf/).
 
+## Fetching git submodules
+
+`git submodule init && git submodule update`
+
 ### Mac OS X and Linux
 
-Run `./build.sh` and check `bin/` for binary
+See `scripts/README.md`
 
 ### Windows
 
