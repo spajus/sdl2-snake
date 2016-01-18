@@ -4,8 +4,8 @@ project(Snake)
 # Use FindSDL2* modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${Snake_SOURCE_DIR}/cmake")
 set(BIN_DIR ${CMAKE_SOURCE_DIR}/bin)
-set(SDL2 "${Snake_SOURCE_DIR}/deps/SDL2-2.0.4")
 set(GTEST_ROOT "${Snake_SOURCE_DIR}/deps/googletest/googletest")
+set(GMOCK_ROOT "${Snake_SOURCE_DIR}/deps/googletest/googlemock")
 set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 
 
@@ -30,16 +30,20 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(GTest REQUIRED)
+find_package(GMock REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR})
 include_directories(${SDL2_IMAGE_INCLUDE_DIR})
 include_directories(${SDL2_TTF_INCLUDE_DIR})
 include_directories(${GTEST_INCLUDE_DIRS})
+include_directories(${GMOCK_INCLUDE_DIRS})
+
+include_directories(include)
 
 add_executable(Snake src/main.cpp)
 target_link_libraries(Snake ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
 install(TARGETS Snake RUNTIME DESTINATION ${BIN_DIR})
 
 add_executable(RunTests test/run_tests.cpp)
-target_link_libraries(RunTests ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} pthread)
+target_link_libraries(RunTests ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES} pthread)
 add_test(RunTests RunTests)
