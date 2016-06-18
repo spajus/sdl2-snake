@@ -4,6 +4,8 @@ language: cpp
 compiler:
   - clang
 
+# check following whitelist before adding new packages:
+# https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -qq -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
