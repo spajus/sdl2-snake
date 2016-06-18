@@ -1,15 +1,20 @@
-#include "game.hpp"
+#include "snake/sdl_includes.hpp"
+#include "snake/game.hpp"
+#include "snake/audio.hpp"
 
 /*
 SDL_Window* g_pWindow = 0;
 SDL_Renderer* g_pRenderer = 0;
 */
 
-Game* g_game = 0;
+Snake::Game* g_game = 0;
+Snake::Audio* g_audio = 0;
 
 int main(int argc, char* argv[]) {
-  g_game = new Game();
+  g_game = new Snake::Game();
+  g_audio = new Snake::Audio();
   g_game->init();
+  g_audio->init();
 
   while (g_game->running()) {
     g_game->handleEvents();
@@ -17,6 +22,7 @@ int main(int argc, char* argv[]) {
     g_game->render();
   }
 
+  g_audio->clean();
   g_game->clean();
 
   return 0;

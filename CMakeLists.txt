@@ -28,20 +28,29 @@ enable_testing()
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
+find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(GTest REQUIRED)
 find_package(GMock REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR})
 include_directories(${SDL2_IMAGE_INCLUDE_DIR})
+include_directories(${SDL2_MIXER_INCLUDE_DIR})
 include_directories(${SDL2_TTF_INCLUDE_DIR})
-include_directories(${GTEST_INCLUDE_DIRS})
-include_directories(${GMOCK_INCLUDE_DIRS})
 
 include_directories(include)
 
-add_executable(Snake src/main.cpp)
-target_link_libraries(Snake ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
+add_executable(Snake
+  src/main.cpp
+  src/game.cpp
+  src/audio.cpp)
+
+target_link_libraries(Snake
+  ${SDL2_LIBRARY}
+  ${SDL2_IMAGE_LIBRARY}
+  ${SDL2_MIXER_LIBRARY}
+  ${SDL2_TTF_LIBRARY}
+)
 install(TARGETS Snake RUNTIME DESTINATION ${BIN_DIR})
 
 add_executable(RunTests test/run_tests.cpp)
