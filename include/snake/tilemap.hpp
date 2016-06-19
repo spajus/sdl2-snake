@@ -9,13 +9,21 @@ namespace Snake {
     public:
       Tilemap() {}
       ~Tilemap() {}
-      void init(SDL_Renderer* renderer);
+      void init(SDL_Renderer* renderer, int tileW, int tileH);
       bool addTile(std::string filePath, std::string id);
-      void draw(std::string id, int x, int y, int w, int h);
+      /**
+       * Draw single tile at x, y
+       */
+      void draw(std::string id, int x, int y);
+      /**
+       * Fill rectangle with looping tile
+       */
+      void fillWith(std::string id, int x, int y, int w, int h);
       void clean();
     private:
       SDL_Renderer* m_pRenderer = 0;
       std::map<std::string, SDL_Texture*> m_tiles;
-      SDL_Texture* grass = 0;
+      int tileH = 0;
+      int tileW = 0;
   };
 }

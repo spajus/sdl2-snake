@@ -8,7 +8,6 @@ set(GTEST_ROOT "${Snake_SOURCE_DIR}/deps/googletest/googletest")
 set(GMOCK_ROOT "${Snake_SOURCE_DIR}/deps/googletest/googlemock")
 set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 
-
 # Bump up warning levels appropriately for clang, gcc & msvc
 # Also set debug/optimization flags depending on the build type. IDE users choose this when
 # selecting the build mode in their IDE
