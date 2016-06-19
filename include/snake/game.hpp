@@ -24,7 +24,6 @@ namespace Snake {
 
       SDL_Window* window = nullptr;
       SDL_Renderer* renderer = nullptr;
-      Tilemap* tilemap = nullptr;
 
       int screen_w = 0;
       int screen_h = 0;

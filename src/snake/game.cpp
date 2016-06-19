@@ -15,9 +15,8 @@ void Snake::Game::init() {
     is_running = false;
   }
 
-  tilemap = new Snake::Tilemap();
-  tilemap->init(renderer, 32, 32);
-  tilemap->addTile("../resources/images/grass.png", "grass");
+  Tilemap::instance()->init(renderer, 32, 32);
+  Tilemap::instance()->addTile("../resources/images/grass.png", "grass");
 
   is_running = true;
 }
@@ -26,7 +25,7 @@ void Snake::Game::render() {
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-  tilemap->fillWith("grass", 0, 0, screen_w, screen_h);
+  Tilemap::instance()->fillWith("grass", 0, 0, screen_w, screen_h);
   SDL_RenderPresent(renderer);
 }
 
