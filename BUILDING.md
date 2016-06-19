@@ -5,6 +5,7 @@
 - [Cmake 3.2+](https://cmake.org/)
 - [SDL 2.0.x](https://www.libsdl.org/download-2.0.php)
 - [SDL_Image](https://www.libsdl.org/projects/SDL_image/)
+- [SDL_Mixer](https://www.libsdl.org/projects/SDL_mixer/)
 - [SDL_ttf](https://www.libsdl.org/projects/SDL_ttf/).
 
 ## Fetching git submodules
