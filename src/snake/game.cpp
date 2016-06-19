@@ -26,9 +26,7 @@ void Snake::Game::render() {
   SDL_RenderClear(m_pRenderer);
   SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-  int ww, wh = 0;
-  SDL_GetWindowSize(m_pWindow, &ww, &wh);
-  m_pTilemap->fillWith("grass", 0, 0, ww, wh);
+  m_pTilemap->fillWith("grass", 0, 0, screenW, screenH);
   SDL_RenderPresent(m_pRenderer);
 }
 
@@ -39,7 +37,16 @@ void Snake::Game::handleEvents() {
       case SDL_QUIT:
         m_bRunning = false;
         break;
+      case SDL_WINDOWEVENT:
+        switch (event.window.event) {
+          case SDL_WINDOWEVENT_SHOWN:
+          case SDL_WINDOWEVENT_SIZE_CHANGED:
+            SDL_GetWindowSize(m_pWindow, &screenW, &screenH);
+            break;
+        }
+        break;
       default:
+        Utils::debug(std::to_string(event.type));
         break;
     }
   }

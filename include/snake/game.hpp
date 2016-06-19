@@ -26,6 +26,9 @@ namespace Snake {
       SDL_Renderer* m_pRenderer = 0;
       Tilemap* m_pTilemap = 0;
 
+      int screenW = 0;
+      int screenH = 0;
+
       bool m_bRunning;
   };
 };
