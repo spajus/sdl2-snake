@@ -10,13 +10,13 @@ namespace Snake {
         os << msg << " Error: " << SDL_GetError() << std::endl;
       }
       static void debug(const std::string &msg) {
-        bool shouldDebug = false;
-        char* debugEnv = std::getenv("DEBUG");
-        if (debugEnv != NULL && strcmp(debugEnv, "1") == 0) {
-          shouldDebug = true;
+        bool should_debug = false;
+        char* debug_env = std::getenv("DEBUG");
+        if (debug_env != NULL && strcmp(debug_env, "1") == 0) {
+          should_debug = true;
         }
 
-        if (shouldDebug) {
+        if (should_debug) {
           std::cout << "Debug: " << msg << std::endl;
         }
       }

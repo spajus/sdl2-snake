@@ -11,6 +11,6 @@ namespace Snake {
     void clean();
 
     private:
-     Mix_Music* m_pMusic = nullptr;
+     Mix_Music* music = nullptr;
   };
 };

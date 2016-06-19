@@ -1,61 +1,61 @@
 #include "snake/tilemap.hpp"
 
-void Snake::Tilemap::init(SDL_Renderer* renderer, int tileW, int tileH) {
-  m_pRenderer = renderer;
-  this->tileW = tileW;
-  this->tileH = tileH;
+void Snake::Tilemap::init(SDL_Renderer* renderer, int tile_w, int tile_h) {
+  this->renderer = renderer;
+  this->tile_w = tile_w;
+  this->tile_h = tile_h;
 }
 
-bool Snake::Tilemap::addTile(std::string filePath, std::string id) {
-  SDL_Surface* pTempSurface = IMG_Load(filePath.c_str());
+bool Snake::Tilemap::addTile(std::string file_path, std::string id) {
+  SDL_Surface* temp_surface = IMG_Load(file_path.c_str());
 
-  if (pTempSurface == 0) {
+  if (temp_surface == 0) {
     Utils::logSDLError(std::cerr, "Image load fail");
     return false;
   }
 
-  SDL_Texture* pTexture = SDL_CreateTextureFromSurface(
-      m_pRenderer, pTempSurface);
+  SDL_Texture* texture = SDL_CreateTextureFromSurface(
+      renderer, temp_surface);
 
-  if (pTexture == 0) {
+  if (texture == 0) {
     Snake::Utils::logSDLError(std::cerr,
-        "Could not create texture: " + filePath);
+        "Could not create texture: " + file_path);
     return false;
   }
 
-  SDL_FreeSurface(pTempSurface);
+  SDL_FreeSurface(temp_surface);
 
-  if (pTexture != 0) {
-    m_tiles[id] = pTexture;
+  if (texture != 0) {
+    tiles[id] = texture;
     return true;
   }
 
-  Snake::Utils::logSDLError(std::cerr, "Could not load image: " + filePath);
+  Snake::Utils::logSDLError(std::cerr, "Could not load image: " + file_path);
   return false;
 }
 
 void Snake::Tilemap::draw(std::string id, int x, int y) {
-  SDL_Rect srcRect;
-  SDL_Rect destRect;
+  SDL_Rect src_rect;
+  SDL_Rect dest_rect;
 
-  srcRect.x = 0;
-  srcRect.y = 0;
-  srcRect.w = tileW;
-  srcRect.h = tileH;
+  src_rect.x = 0;
+  src_rect.y = 0;
+  src_rect.w = tile_w;
+  src_rect.h = tile_h;
 
-  destRect.x = x;
-  destRect.y = y;
-  destRect.w = tileW;
-  destRect.h = tileH;
+  dest_rect.x = x;
+  dest_rect.y = y;
+  dest_rect.w = tile_w;
+  dest_rect.h = tile_h;
 
   SDL_RenderCopyEx(
-      m_pRenderer, m_tiles[id], &srcRect, &destRect, 0, 0, SDL_FLIP_NONE);
+      renderer, tiles[id], &src_rect, &dest_rect, 0, 0, SDL_FLIP_NONE);
 }
 
 void Snake::Tilemap::fillWith(std::string id, int x, int y, int w, int h) {
-  for (int curX = x; curX < w; curX += tileW) {
-    for (int curY = y; curY < h; curY += tileH) {
-      draw(id, curX, curY);
+  for (int cur_x = x; cur_x < w; cur_x += tile_w) {
+    for (int cur_y = y; cur_y < h; cur_y += tile_h) {
+      draw(id, cur_x, cur_y);
     }
   }
 }

@@ -18,17 +18,17 @@ namespace Snake {
       void handleEvents();
       void clean();
 
-      bool running() { return m_bRunning; }
+      bool isRunning() { return is_running; }
 
     private:
 
-      SDL_Window* m_pWindow = nullptr;
-      SDL_Renderer* m_pRenderer = nullptr;
-      Tilemap* m_pTilemap = nullptr;
+      SDL_Window* window = nullptr;
+      SDL_Renderer* renderer = nullptr;
+      Tilemap* tilemap = nullptr;
 
-      int screenW = 0;
-      int screenH = 0;
+      int screen_w = 0;
+      int screen_h = 0;
 
-      bool m_bRunning;
+      bool is_running;
   };
 };

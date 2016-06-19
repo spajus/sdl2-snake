@@ -3,23 +3,23 @@
 #include "snake/audio.hpp"
 #include "snake/utils.hpp"
 
-Snake::Game* g_game = 0;
-Snake::Audio* g_audio = 0;
+Snake::Game* game = 0;
+Snake::Audio* audio = 0;
 
 int main(int argc, char* argv[]) {
-  g_game = new Snake::Game();
-  g_audio = new Snake::Audio();
-  g_game->init();
-  g_audio->init();
+  game = new Snake::Game();
+  audio = new Snake::Audio();
+  game->init();
+  audio->init();
 
-  while (g_game->running()) {
-    g_game->handleEvents();
-    g_game->update();
-    g_game->render();
+  while (game->isRunning()) {
+    game->handleEvents();
+    game->update();
+    game->render();
   }
 
-  g_audio->clean();
-  g_game->clean();
+  audio->clean();
+  game->clean();
 
   return 0;
 }

@@ -9,8 +9,8 @@ namespace Snake {
     public:
       Tilemap() {}
       ~Tilemap() {}
-      void init(SDL_Renderer* renderer, int tileW, int tileH);
-      bool addTile(std::string filePath, std::string id);
+      void init(SDL_Renderer* renderer, int tile_w, int tile_h);
+      bool addTile(std::string file_path, std::string id);
       /**
        * Draw single tile at x, y
        */
@@ -21,9 +21,9 @@ namespace Snake {
       void fillWith(std::string id, int x, int y, int w, int h);
       void clean();
     private:
-      SDL_Renderer* m_pRenderer = nullptr;
-      std::map<std::string, SDL_Texture*> m_tiles;
-      int tileH = 0;
-      int tileW = 0;
+      SDL_Renderer* renderer = nullptr;
+      std::map<std::string, SDL_Texture*> tiles;
+      int tile_h = 0;
+      int tile_w = 0;
   };
 }

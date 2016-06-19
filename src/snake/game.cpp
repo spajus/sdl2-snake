@@ -2,32 +2,32 @@
 
 void Snake::Game::init() {
   if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
-    m_pWindow = SDL_CreateWindow("SDL Snake",
+    window = SDL_CreateWindow("SDL Snake",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         640, 480,
         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-    if (m_pWindow != 0) {
-      m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+    if (window != 0) {
+      renderer = SDL_CreateRenderer(window, -1, 0);
     }
   } else {
     Snake::Utils::logSDLError(std::cout, "Failed initializing SDL");
-    m_bRunning = false;
+    is_running = false;
   }
 
-  m_pTilemap = new Snake::Tilemap();
-  m_pTilemap->init(m_pRenderer, 32, 32);
-  m_pTilemap->addTile("../resources/images/grass.png", "grass");
+  tilemap = new Snake::Tilemap();
+  tilemap->init(renderer, 32, 32);
+  tilemap->addTile("../resources/images/grass.png", "grass");
 
-  m_bRunning = true;
+  is_running = true;
 }
 
 void Snake::Game::render() {
-  SDL_RenderClear(m_pRenderer);
-  SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+  SDL_RenderClear(renderer);
+  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-  m_pTilemap->fillWith("grass", 0, 0, screenW, screenH);
-  SDL_RenderPresent(m_pRenderer);
+  tilemap->fillWith("grass", 0, 0, screen_w, screen_h);
+  SDL_RenderPresent(renderer);
 }
 
 void Snake::Game::handleEvents() {
@@ -35,13 +35,13 @@ void Snake::Game::handleEvents() {
   if (SDL_PollEvent(&event)) {
     switch (event.type) {
       case SDL_QUIT:
-        m_bRunning = false;
+        is_running = false;
         break;
       case SDL_WINDOWEVENT:
         switch (event.window.event) {
           case SDL_WINDOWEVENT_SHOWN:
           case SDL_WINDOWEVENT_SIZE_CHANGED:
-            SDL_GetWindowSize(m_pWindow, &screenW, &screenH);
+            SDL_GetWindowSize(window, &screen_w, &screen_h);
             break;
         }
         break;
@@ -53,7 +53,7 @@ void Snake::Game::handleEvents() {
 }
 
 void Snake::Game::clean() {
-  SDL_DestroyWindow(m_pWindow);
-  SDL_DestroyRenderer(m_pRenderer);
+  SDL_DestroyWindow(window);
+  SDL_DestroyRenderer(renderer);
   SDL_Quit();
 }
