@@ -27,9 +27,9 @@ namespace Snake {
       void clean();
 
     private:
+      static Snake::Tilemap* _instance;
       Tilemap() {}
       ~Tilemap() {}
-      static Tilemap* _instance;
       SDL_Renderer* renderer = nullptr;
       std::map<std::string, SDL_Texture*> tiles;
       int tile_h = 0;

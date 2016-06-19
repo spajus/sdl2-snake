@@ -1,5 +1,7 @@
 #include "snake/tilemap.hpp"
 
+Snake::Tilemap* Snake::Tilemap::_instance = nullptr;
+
 void Snake::Tilemap::init(SDL_Renderer* renderer, int tile_w, int tile_h) {
   this->renderer = renderer;
   this->tile_w = tile_w;
