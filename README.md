@@ -23,11 +23,12 @@ to make a difference with following goals:
 - Code comments
 - Unit tests and linters on continuous integration pipeline
 - Automated scripts for building cross platform packages on VMs
+- Developing without Visual Studio, Xcode or other IDE / GUI tools
 
 ## Status
 
 This project is in it's very early stage. It is being built from scratch in the
-open.
+open, with little spare time for it.
 
 
 ## Credits
