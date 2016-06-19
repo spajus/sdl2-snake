@@ -22,9 +22,9 @@ namespace Snake {
 
     private:
 
-      SDL_Window* m_pWindow = 0;
-      SDL_Renderer* m_pRenderer = 0;
-      Tilemap* m_pTilemap = 0;
+      SDL_Window* m_pWindow = nullptr;
+      SDL_Renderer* m_pRenderer = nullptr;
+      Tilemap* m_pTilemap = nullptr;
 
       int screenW = 0;
       int screenH = 0;

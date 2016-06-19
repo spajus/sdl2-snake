@@ -21,7 +21,7 @@ namespace Snake {
       void fillWith(std::string id, int x, int y, int w, int h);
       void clean();
     private:
-      SDL_Renderer* m_pRenderer = 0;
+      SDL_Renderer* m_pRenderer = nullptr;
       std::map<std::string, SDL_Texture*> m_tiles;
       int tileH = 0;
       int tileW = 0;
