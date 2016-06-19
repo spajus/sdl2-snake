@@ -2,7 +2,8 @@
 #include <iostream>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "utils.hpp"
+#include "snake/utils.hpp"
+#include "snake/tilemap.hpp"
 namespace Snake {
   class Game {
     public:
@@ -23,6 +24,7 @@ namespace Snake {
 
       SDL_Window* m_pWindow = 0;
       SDL_Renderer* m_pRenderer = 0;
+      Tilemap* m_pTilemap = 0;
 
       bool m_bRunning;
   };

@@ -42,8 +42,9 @@ include_directories(include)
 
 add_executable(Snake
   src/main.cpp
-  src/game.cpp
-  src/audio.cpp)
+  src/snake/game.cpp
+  src/snake/tilemap.cpp
+  src/snake/audio.cpp)
 
 target_link_libraries(Snake
   ${SDL2_LIBRARY}

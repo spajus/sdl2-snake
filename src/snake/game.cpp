@@ -13,12 +13,18 @@ void Snake::Game::init() {
     Snake::Utils::logSDLError(std::cout, "Failed initializing SDL");
     m_bRunning = false;
   }
+
+  m_pTilemap = new Snake::Tilemap();
+  m_pTilemap->init(m_pRenderer);
+  m_pTilemap->addTile("../resources/images/grass.png", "grass");
+
   m_bRunning = true;
 }
 
 void Snake::Game::render() {
-  SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
   SDL_RenderClear(m_pRenderer);
+  SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+  m_pTilemap->draw("grass", 0, 0, 32, 32);
   SDL_RenderPresent(m_pRenderer);
 }
 

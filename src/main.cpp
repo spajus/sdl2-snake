@@ -1,11 +1,7 @@
 #include "snake/sdl_includes.hpp"
 #include "snake/game.hpp"
 #include "snake/audio.hpp"
-
-/*
-SDL_Window* g_pWindow = 0;
-SDL_Renderer* g_pRenderer = 0;
-*/
+#include "snake/utils.hpp"
 
 Snake::Game* g_game = 0;
 Snake::Audio* g_audio = 0;

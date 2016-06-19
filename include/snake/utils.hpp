@@ -11,6 +11,9 @@ namespace Snake {
       static void logSDLError(std::ostream &os, const std::string &msg) {
         os << msg << " Error: " << SDL_GetError() << std::endl;
       }
+      static void debug(const std::string &msg) {
+        std::cout << "Debug: " << msg << std::endl;
+      }
   };
 }
 #endif
