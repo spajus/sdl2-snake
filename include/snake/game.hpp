@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include "snake/utils.hpp"
-#include "snake/tilemap.hpp"
+#include "snake/player.hpp"
 namespace Snake {
   class Game {
     public:
@@ -24,6 +24,8 @@ namespace Snake {
 
       SDL_Window* window = nullptr;
       SDL_Renderer* renderer = nullptr;
+
+      Player* player = nullptr;
 
       int screen_w = 0;
       int screen_h = 0;

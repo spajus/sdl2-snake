@@ -43,6 +43,8 @@ add_executable(Snake
   src/main.cpp
   src/snake/game.cpp
   src/snake/tilemap.cpp
+  src/snake/game_object.cpp
+  src/snake/player.cpp
   src/snake/audio.cpp)
 
 target_link_libraries(Snake
