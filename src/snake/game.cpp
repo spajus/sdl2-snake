@@ -6,7 +6,7 @@ void Snake::Game::init() {
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         640, 480,
-        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
+        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     if (m_pWindow != 0) {
       m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
     }
