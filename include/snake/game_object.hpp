@@ -12,5 +12,7 @@ namespace Snake {
       int x;
       int y;
       std::string texture_id;
+      int last_update = 0;
+      double time_delta;
   };
 }

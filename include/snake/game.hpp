@@ -12,9 +12,7 @@ namespace Snake {
 
       void init();
       void render();
-
-      void update() { }
-
+      void update();
       void handleEvents();
       void clean();
 

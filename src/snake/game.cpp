@@ -38,6 +38,10 @@ void Snake::Game::render() {
   SDL_RenderPresent(renderer);
 }
 
+void Snake::Game::update() {
+  player->update();
+}
+
 void Snake::Game::handleEvents() {
   SDL_Event event;
   if (SDL_PollEvent(&event)) {
