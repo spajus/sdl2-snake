@@ -7,8 +7,8 @@ namespace Snake {
     public:
       void load(int x, int y);
       void update();
-    private:
       Direction direction = down;
-      int speed = 32;
+    private:
+      int speed = 128;
   };
 }

@@ -9,8 +9,8 @@ namespace Snake {
       void clean();
 
     protected:
-      int x;
-      int y;
+      float x;
+      float y;
       std::string texture_id;
       int last_update = 0;
       double time_delta;

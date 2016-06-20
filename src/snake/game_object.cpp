@@ -17,5 +17,5 @@ void Snake::GameObject::update() {
 }
 
 void Snake::GameObject::draw() {
-  Tilemap::instance()->draw(texture_id, x, y);
+  Tilemap::instance()->draw(texture_id, round(x), round(y));
 }

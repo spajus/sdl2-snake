@@ -6,7 +6,7 @@ void Snake::Player::load(int x, int y) {
 
 void Snake::Player::update() {
   GameObject::update();
-  int speed_delta = speed * time_delta;
+  float speed_delta = speed * time_delta;
   switch (direction) {
     case left:
       x -= speed_delta;
@@ -22,7 +22,3 @@ void Snake::Player::update() {
       break;
   }
 }
-
-
-
-
