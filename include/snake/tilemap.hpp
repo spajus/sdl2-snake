@@ -19,7 +19,7 @@ namespace Snake {
       /**
        * Draw single tile at x, y
        */
-      void draw(std::string id, int x, int y);
+      void render(std::string id, int x, int y);
       /**
        * Fill rectangle with looping tile
        */

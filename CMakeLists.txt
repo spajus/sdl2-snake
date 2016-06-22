@@ -44,6 +44,7 @@ add_executable(Snake
   src/snake/game.cpp
   src/snake/tilemap.cpp
   src/snake/game_object.cpp
+  src/snake/tail_node.cpp
   src/snake/player.cpp
   src/snake/audio.cpp)
 

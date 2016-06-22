@@ -1,6 +1,7 @@
 #include "snake/game.hpp"
 #include "snake/player.hpp"
 #include "snake/tilemap.hpp"
+#include "snake/tail_node.hpp"
 
 void Snake::Game::init() {
   if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
@@ -26,6 +27,9 @@ void Snake::Game::init() {
 
   player = new Player();
   player->load(100, 100);
+  for (int i = 0; i < 10; i++) {
+    player->growTail();
+  }
 
   is_running = true;
 }
@@ -34,7 +38,7 @@ void Snake::Game::render() {
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   Tilemap::instance()->fillWith("grass", 0, 0, screen_w, screen_h);
-  player->draw();
+  player->render();
   SDL_RenderPresent(renderer);
 }
 

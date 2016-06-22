@@ -36,7 +36,7 @@ bool Snake::Tilemap::addTile(std::string file_path, std::string id) {
   return false;
 }
 
-void Snake::Tilemap::draw(std::string id, int x, int y) {
+void Snake::Tilemap::render(std::string id, int x, int y) {
   SDL_Rect src_rect;
   SDL_Rect dest_rect;
 
@@ -57,7 +57,7 @@ void Snake::Tilemap::draw(std::string id, int x, int y) {
 void Snake::Tilemap::fillWith(std::string id, int x, int y, int w, int h) {
   for (int cur_x = x; cur_x < w; cur_x += tile_w) {
     for (int cur_y = y; cur_y < h; cur_y += tile_h) {
-      draw(id, cur_x, cur_y);
+      render(id, cur_x, cur_y);
     }
   }
 }
