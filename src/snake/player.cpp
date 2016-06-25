@@ -22,3 +22,13 @@ void Snake::Player::update() {
       break;
   }
 }
+
+void Snake::Player::growTail() {
+  TailNode* node = new TailNode();
+  if (tail == nullptr) {
+    node->addTo(this);
+  } else {
+    node->addTo(tail);
+  }
+  tail = node;
+}
