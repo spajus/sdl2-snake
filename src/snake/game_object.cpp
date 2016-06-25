@@ -21,6 +21,9 @@ void Snake::GameObject::update() {
 }
 void Snake::GameObject::addChild(GameObject* child) {
   this->children.push_back(child);
+  // if following is uncommented, it segfaults at TailNode::update() when
+  // trying to access parent object's x (which appears to be null)
+  child->parent = this;
 }
 
 void Snake::GameObject::render() {
