@@ -1,3 +1,3 @@
 #!/bin/sh
 # TODO: do it with cmake
-cppcheck --enable=all --std=c++11 -I include/ src/
+cppcheck --enable=all --enable=style --inconclusive --std=c++11 -q --verbose -I include/ src/
