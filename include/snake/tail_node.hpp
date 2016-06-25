@@ -10,6 +10,5 @@ namespace Snake {
       void update();
     private:
       int speed = 128;
-      GameObject* parent;
   };
 }

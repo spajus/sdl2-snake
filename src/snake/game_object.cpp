@@ -21,6 +21,7 @@ void Snake::GameObject::update() {
 }
 void Snake::GameObject::addChild(GameObject* child) {
   this->children.push_back(child);
+  child->parent = this;
 }
 
 void Snake::GameObject::render() {

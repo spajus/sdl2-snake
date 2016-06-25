@@ -4,7 +4,6 @@
 void Snake::TailNode::addTo(GameObject* parent) {
   GameObject::load("snake_body", parent->getX(), parent->getY());
   parent->addChild(this);
-  this->parent = parent;
   x = parent->getX();
   y = parent->getY();
 }
