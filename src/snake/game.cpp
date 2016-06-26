@@ -27,7 +27,7 @@ void Snake::Game::init() {
 
   player = new Player();
   player->load(100, 100);
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 100; i++) {
     player->growTail();
   }
 
@@ -81,7 +81,6 @@ void Snake::Game::handleEvents() {
         }
         break;
       default:
-        Utils::debug(std::to_string(event.type));
         break;
     }
   }

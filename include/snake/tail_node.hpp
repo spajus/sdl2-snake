@@ -6,14 +6,15 @@
 namespace Snake {
   class TailNode : public GameObject {
     public:
+      static const double MAX_DIST;
       TailNode() {};
       ~TailNode() {};
       void addTo(GameObject* parent);
       void addPath(PathPoint* path_point);
+      double moveTowards(PathPoint* target);
       void update();
       TailNode* next_node = nullptr;
-    private:
-      int speed = 129;
       std::queue<PathPoint*> path;
+      double speed_delta = 0;
   };
 }
