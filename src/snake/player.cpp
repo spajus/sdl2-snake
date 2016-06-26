@@ -1,4 +1,5 @@
 #include "snake/player.hpp"
+#include "snake/path_point.hpp"
 
 void Snake::Player::load(int x, int y) {
   GameObject::load("snake_head", x, y);
@@ -6,7 +7,7 @@ void Snake::Player::load(int x, int y) {
 
 void Snake::Player::update() {
   GameObject::update();
-  float speed_delta = speed * time_delta;
+  double speed_delta = speed * time_delta;
   switch (direction) {
     case left:
       x -= speed_delta;
@@ -23,12 +24,18 @@ void Snake::Player::update() {
   }
 }
 
+void Snake::Player::setDirection(Direction direction) {
+  this->direction = direction;
+  next_node->addPath(new PathPoint(x, y));
+}
+
 void Snake::Player::growTail() {
   TailNode* node = new TailNode();
-  if (tail == nullptr) {
+  if (next_node == nullptr) {
     node->addTo(this);
+    next_node = node;
   } else {
-    node->addTo(tail);
+    node->addTo(last_node);
   }
-  tail = node;
+  last_node = node;
 }

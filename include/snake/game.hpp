@@ -28,6 +28,6 @@ namespace Snake {
       int screen_w = 0;
       int screen_h = 0;
 
-      bool is_running;
+      bool is_running = false;
   };
 };

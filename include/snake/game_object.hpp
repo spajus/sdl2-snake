@@ -4,25 +4,22 @@
 namespace Snake {
   class GameObject {
     public:
-      void load(std::string texture_id, float x, float y);
+      void load(std::string texture_id, double x, double y);
       virtual void render();
       virtual void update();
+      void setAnchorPoint();
       void clean();
       virtual void addChild(GameObject* child);
-      virtual float distanceTo(GameObject* other);
-      virtual float getX() const { return x; }
-      virtual float getY() const { return y; }
-      virtual void setX(float x) { this->x = x; }
-      virtual void setY(float y) { this->y = y; }
-
+      virtual double distanceTo(GameObject* other);
+      virtual double distanceTo(double x, double y);
       GameObject* parent = nullptr;
       std::vector<GameObject*> children;
+      double x = 0;
+      double y = 0;
 
     protected:
       std::string texture_id;
       int last_update = 0;
       double time_delta;
-      float x = 0;
-      float y = 0;
   };
 }

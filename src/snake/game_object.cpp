@@ -2,7 +2,7 @@
 #include "snake/tilemap.hpp"
 #include <math.h>
 
-void Snake::GameObject::load(std::string texture_id, float x, float y) {
+void Snake::GameObject::load(std::string texture_id, double x, double y) {
   this->x = x;
   this->y = y;
   this->texture_id = texture_id;
@@ -31,6 +31,10 @@ void Snake::GameObject::render() {
   Tilemap::instance()->render(texture_id, round(x), round(y));
 }
 
-float Snake::GameObject::distanceTo(GameObject* other) {
-  return sqrt(pow(x - other->getX(), 2) + pow(y - other->getY(), 2));
+double Snake::GameObject::distanceTo(GameObject* other) {
+  return distanceTo(other->x, other->y);
+}
+
+double Snake::GameObject::distanceTo(double x, double y) {
+  return sqrt(pow(this->x - x, 2) + pow(this->y - y, 2));
 }

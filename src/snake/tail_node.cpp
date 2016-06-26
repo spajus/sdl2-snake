@@ -2,27 +2,47 @@
 #include "snake/utils.hpp"
 
 void Snake::TailNode::addTo(GameObject* parent) {
-  GameObject::load("snake_body", parent->getX(), parent->getY());
+  GameObject::load("snake_body", parent->x, parent->y);
   parent->addChild(this);
-  x = parent->getX();
-  y = parent->getY();
+  x = parent->x;
+  y = parent->y;
+}
+
+void Snake::TailNode::addPath(PathPoint* path_point) {
+  path.push(path_point);
 }
 
 void Snake::TailNode::update() {
+  if (path.empty()) {
+    if (distanceTo(parent) > 32) {
+      addPath(new PathPoint(parent->x, parent->y));
+    }
+  }
+  if (path.empty()) {
+    return;
+  }
+  PathPoint* target = path.front();
   GameObject::update();
-  float speed_delta = speed * time_delta;
-  if (distanceTo(parent) > 32) {
-    if (x < parent->getX()) {
+  double speed_delta = speed * time_delta;
+  if (distanceTo(target->x, target->y) > speed_delta) {
+    if (x < target->x) {
       x += speed_delta;
     }
-    else if (x > parent->getX()) {
+    if (x > target->x) {
       x -= speed_delta;
     }
-    if (y < parent->getY()) {
+    if (y < target->y) {
       y += speed_delta;
     }
-    if (y > parent->getY()) {
+    if (y > target->y) {
       y -= speed_delta;
+    }
+  } else {
+    path.pop();
+    if (next_node != nullptr) {
+      next_node->addPath(target);
+    } else {
+      delete target;
     }
   }
 }

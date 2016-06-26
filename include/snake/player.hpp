@@ -9,9 +9,11 @@ namespace Snake {
       void load(int x, int y);
       void update();
       void growTail();
+      void setDirection(Direction direction);
       Direction direction = down;
     private:
       int speed = 128;
-      TailNode* tail = nullptr;
+      TailNode* last_node = nullptr;
+      TailNode* next_node = nullptr;
   };
 }

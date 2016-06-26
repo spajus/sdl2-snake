@@ -56,16 +56,16 @@ void Snake::Game::handleEvents() {
       case SDL_KEYDOWN:
         switch (event.key.keysym.sym) {
           case SDLK_UP:
-            player->direction = up;
+            player->setDirection(up);
             break;
           case SDLK_DOWN:
-            player->direction = down;
+            player->setDirection(down);
             break;
           case SDLK_LEFT:
-            player->direction = left;
+            player->setDirection(left);
             break;
           case SDLK_RIGHT:
-            player->direction = right;
+            player->setDirection(right);
             break;
           case SDLK_ESCAPE:
             is_running = false;
