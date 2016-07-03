@@ -42,9 +42,38 @@ void Snake::Player::update() {
   }
 }
 
-void Snake::Player::setDirection(Direction direction) {
-  this->direction = direction;
-  next_node->addPath(new PathPoint(x, y));
+bool Snake::Player::directionPerpendicularTo(Direction new_direction) {
+  switch (direction) {
+    case left:
+    case right:
+      switch (new_direction) {
+        case up:
+        case down:
+          return true;
+        default:
+          break;
+      }
+      break;
+    case up:
+    case down:
+      switch (new_direction) {
+        case left:
+        case right:
+          return true;
+        default:
+          break;
+      }
+    default:
+      break;
+  }
+  return false;
+}
+
+void Snake::Player::setDirection(Direction new_direction) {
+  if (directionPerpendicularTo(new_direction)) {
+    direction = new_direction;
+    next_node->addPath(new PathPoint(x, y));
+  }
 }
 
 void Snake::Player::growTail() {

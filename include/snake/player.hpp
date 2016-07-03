@@ -9,7 +9,8 @@ namespace Snake {
       void load(int x, int y);
       void update();
       void growTail();
-      void setDirection(Direction direction);
+      void setDirection(Direction new_direction);
+      bool directionPerpendicularTo(Direction new_direction);
       Direction direction = down;
     private:
       int speed = 128;
