@@ -24,6 +24,12 @@ void Snake::Player::update() {
       y += speed_delta;
       break;
   }
+
+  if (next_node->collidesWith(this, 0)) {
+    // TODO: implement game over
+    speed = 0;
+  }
+
   if (!next_node->path.empty()) {
     PathPoint* last_path = next_node->path.back();
     if (distanceTo(last_path->x, last_path->y) > speed_delta) {

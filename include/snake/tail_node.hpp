@@ -11,10 +11,12 @@ namespace Snake {
       ~TailNode() {};
       void addTo(GameObject* parent);
       void addPath(PathPoint* path_point);
+      bool collidesWith(GameObject* other, int node_number);
       double moveTowards(PathPoint* target);
       void update();
       TailNode* next_node = nullptr;
       std::queue<PathPoint*> path;
       double speed_delta = 0;
+      bool in_motion = false;
   };
 }

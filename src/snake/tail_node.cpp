@@ -18,6 +18,19 @@ void Snake::TailNode::addPath(PathPoint* path_point) {
   }
 }
 
+bool Snake::TailNode::collidesWith(GameObject* other, int node_number) {
+  if (!in_motion) {
+    return false;
+  }
+  if (node_number > 10 && distanceTo(other) < 16) {
+    return true;
+  }
+  if (next_node != nullptr) {
+    return next_node->collidesWith(other, node_number + 1);
+  }
+  return false;
+}
+
 void Snake::TailNode::update() {
   GameObject::update();
   if (next_node != nullptr) {
@@ -69,5 +82,6 @@ double Snake::TailNode::moveTowards(PathPoint* target) {
       y -= speed_delta;
     }
   }
+  in_motion = true;
   return distanceTo(target->x, target->y);
 }
